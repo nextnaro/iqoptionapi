@@ -3,24 +3,17 @@
 This unnofficial Python API is intended to be an open source project to communicate with IQOption broker.
 
 
-### IMPORTANT NOTE / NOTA IMPORTANTE 
+### IMPORTANT NOTE
 
 Due to the large amount of scammers that have appeared in the market, it is recommended that you DO NOT enter your password into an unknown exe or robot site that operates on iqoption because many of those have stolen people's passwords so be careful. It's best if you develop your robot or hire someone you trust.
 
 Based on:
 [iqoptionapi](https://github.com/iqoptionapi/iqoptionapi)
-[Lu-Yi-Hsun](https://github.com/Lu-Yi-Hsun/pyqoptionapi/)
-[evecimar](https://github.com/evecimar/pyqoptionapi)
 
 ## Summary
 
 - [Contribute with Community](#contribe)
 - [How to start](#howtostart)
-- [How to get Technical Indicators](#technicalindicators)
-
-## Live documentation
-
-[documentation](https://pyqoptionapi.github.io/pyqoptionapi/)
 
 <div id='contribe'/>
 
