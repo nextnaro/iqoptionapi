@@ -10,7 +10,7 @@ import operator
 import pyqoptionapi.global_value as global_value
 from collections import defaultdict
 from collections import deque
-from pyqoptionapi.expiration import get_expiration_time, get_remaning_time
+from pyqoptionapi.expiration import get_expiration_time, get_remaining_time
 from pyqoptionapi.version_control import api_version
 from datetime import datetime, timedelta
 from random import randint
@@ -452,11 +452,7 @@ class IQ_Option:
                     return "TOURNAMENT"
 
     def reset_practice_balance(self):
-        self.api.training_balance_reset_request = None
         self.api.reset_training_balance()
-        while self.api.training_balance_reset_request == None:
-            pass
-        return self.api.training_balance_reset_request
 
     def position_change_all(self, Main_Name, user_balance_id):
         instrument_type = ["cfd", "forex", "crypto",
@@ -868,8 +864,8 @@ class IQ_Option:
         else:
             logging.error('buy_multi error please input all same len')
 
-    def get_remaning(self, duration):
-        for remaning in get_remaning_time(self.api.timesync.server_timestamp):
+    def get_remaining(self, duration):
+        for remaning in get_remaining_time(self.api.timesync.server_timestamp):
             if remaning[0] == duration:
                 return remaning[1]
         logging.error('get_remaning(self,duration) ERROR duration')
