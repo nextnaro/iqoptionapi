@@ -6,7 +6,7 @@ setup(
     name="pyqoptionapi",
     version=api_version,
     packages=find_packages(),
-    install_requires=["pylint", "requests", "websocket-client"],
+    install_requires=["pylint", "requests", "websocket-client", "wsaccel"],
     include_package_data=True,
     description="Best & Updated IQ Option API for Python",
     long_description="Best & Updated IQ Option API for Python",

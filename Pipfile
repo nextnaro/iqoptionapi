@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 requests = "*"
 websocket_client = "*"
+wsaccel = "*"
 
 [dev-packages]
 pylint = "*"
