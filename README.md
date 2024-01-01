@@ -1,3 +1,6 @@
+[![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/pylint-dev/pylint)
+
+
 ## IQOPTION API SUPPORTED BY COMMUNITY
 
 This unnofficial Python API is intended to be an open source project to communicate with IQOption broker.
