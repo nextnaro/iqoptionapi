@@ -9,7 +9,7 @@ email=os.getenv("email")
 password=os.getenv("password")
 class TestCandle(unittest.TestCase):
   
-    def test_Candle(self):
+    def test_candle(self):
         #login
         I_want_money=IQ_Option(email,password)
         I_want_money.change_balance("PRACTICE")

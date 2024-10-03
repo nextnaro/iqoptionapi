@@ -302,11 +302,19 @@ class IQ_Option:
                             else:
                                 self.OPEN_TIME[option][name]["open"] = True
                         else:
-                            self.OPEN_TIME[option][name]["open"] = active["enabled"]    
+                            self.OPEN_TIME[option][name]["open"] = active["enabled"]
+        
+        # update actives opcode       
+        for dirr in ["binary", "turbo"]:
+            actives = binary_data[dirr]["actives"]
+            for i, details in actives.items():
+                name_part = details["name"].split(".")[1]
+                OP_code.ACTIVES[name_part] = int(i)    
 
     def __get_digital_open(self):
         # for digital options
         digital_data = self.get_digital_underlying_list_data()["underlying"]
+        
         for digital in digital_data:
             name = digital["underlying"]
             schedule = digital["schedule"]
@@ -316,6 +324,12 @@ class IQ_Option:
                 end = schedule_time["close"]
                 if start < time.time() < end:
                     self.OPEN_TIME["digital"][name]["open"] = True
+         
+        # update digital actives opcode
+        for item in digital_data:
+            underlying_nome = item['underlying']
+            active_id_valor = item['active_id']
+            OP_code.ACTIVES[underlying_nome] = active_id_valor
 
     def __get_other_open(self):
         # Crypto and etc pairs
@@ -335,13 +349,17 @@ class IQ_Option:
     def get_all_open_time(self):
         # all pairs openned
         self.OPEN_TIME = nested_dict(3, dict)
+        
         binary = threading.Thread(target=self.__get_binary_open)
         digital = threading.Thread(target=self.__get_digital_open)
         other = threading.Thread(target=self.__get_other_open)
 
         binary.start(), digital.start(), other.start()
-
         binary.join(), digital.join(), other.join()
+        
+        # ordenate updated actives opcode
+        OP_code.ACTIVES = dict(sorted(OP_code.ACTIVES.items(), key=operator.itemgetter(1)))
+        
         return self.OPEN_TIME
 
     # --------for binary option detail
@@ -836,7 +854,7 @@ class IQ_Option:
 
         return self.api.get_options_v2_data
 
-    # __________________________BUY__________________________
+    # __________________________BUY___________________________
 
     # __________________FOR OPTION____________________________
 
@@ -862,9 +880,9 @@ class IQ_Option:
             logging.error('buy_multi error please input all same len')
 
     def get_remaining(self, duration):
-        for remaning in get_remaining_time(self.api.timesync.server_timestamp):
-            if remaning[0] == duration:
-                return remaning[1]
+        for remaining in get_remaining_time(self.api.timesync.server_timestamp):
+            if remaining[0] == duration:
+                return remaining[1]
         logging.error('get_remaning(self,duration) ERROR duration')
         return "ERROR duration"
 
