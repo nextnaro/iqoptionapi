@@ -1,4 +1,4 @@
-[![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/pylint-dev/pylint)
+[![linting: pylint](https://img.shields.io/badge/linting-pylint-yellowgreen)](https://github.com/pylint-dev/pylint) [![Documentation Status](https://readthedocs.org/projects/pyqoptionapi/badge/?version=latest)](https://pyqoptionapi.readthedocs.io/en/latest/?badge=latest)
 
 
 ## IQOPTION API SUPPORTED BY COMMUNITY
